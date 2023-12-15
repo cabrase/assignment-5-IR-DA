@@ -1,10 +1,11 @@
 import unittest
 from nltk.stem import SnowballStemmer
-from vectorspace.vector_space_models import Vector, LegoSet, Corpus
+from src.vectorspace.vector_space_models import Vector, LegoSet, Corpus
 
 __author__ = "Carson Brase"
 __copyright__ = "Copyright 2023, Westmont College, Carson Brase"
 __credits__ = ["Carson Brase"]
+__license__ = "MIT"
 __email__ = "cbrase@westmont.edu"
 
 
@@ -96,12 +97,17 @@ class CorpusTest(unittest.TestCase):
         exclude_words = {"fish", "pig", "cow"}
         stemmer = SnowballStemmer('english')
 
-        self.doc1 = Document(title="Doc 1", words=words1, processors=(exclude_words, stemmer))
-        self.doc2 = Document(title="Doc 2", words=words2, processors=(exclude_words, stemmer))
-        self.doc3 = Document(title="Doc 3", words=words3, processors=(exclude_words, stemmer))
+        self.doc1 = LegoSet(title="Doc 1", words=words1, processors=(exclude_words, stemmer),
+                            list_price=40.0, review_difficulty="Easy")
+        self.doc2 = LegoSet(title="Doc 2", words=words2, processors=(exclude_words, stemmer),
+                            list_price=50.0, review_difficulty="Average")
+        self.doc3 = LegoSet(title="Doc 3", words=words3, processors=(exclude_words, stemmer),
+                            list_price=60.0, review_difficulty="Challenging")
 
-        self.doc4 = Document(title="doc 4", words=words4, processors=(exclude_words, stemmer))
-        self.doc5 = Document(title="doc 5", words=words5, processors=(exclude_words, stemmer))
+        self.doc4 = LegoSet(title="doc 4", words=words4, processors=(exclude_words, stemmer),
+                            list_price=70.0, review_difficulty="Easy")
+        self.doc5 = LegoSet(title="doc 5", words=words5, processors=(exclude_words, stemmer),
+                            list_price=45.0, review_difficulty="Very Easy")
 
         self.corp1 = Corpus([self.doc1, self.doc2, self.doc3])
         self.corp2 = Corpus([])

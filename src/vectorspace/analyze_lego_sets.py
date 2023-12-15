@@ -7,12 +7,16 @@ This script analyzes a dataset of Lego sets obtained from lego.com. It performs 
 Credit to ChatGPT using the following prompt:
 “I want to make a new python file that opens the lego_sets.csv file and
 analyzes how price changes as piece count increases and graphs it.”
-
-
 """
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+
+__author__ = "Carson Brase"
+__copyright__ = "Copyright 2023, Westmont College, Carson Brase"
+__credits__ = ["Carson Brase"]
+__license__ = "MIT"
+__email__ = "cbrase@westmont.edu"
 
 # Load the Lego Sets data from the CSV file
 lego_data = pd.read_csv('/Users/CarsonBrase/Desktop/CS128/assignment-5-IR:DA/data/lego_sets.csv')

@@ -69,7 +69,7 @@ def keep_querying(corpus: Corpus, processors: tuple[set[str], SnowballStemmer], 
     while again_response == 'y':
         # Added in two more queries to account for user budget and desired build difficulty
         raw_query = input("What kind of Lego Set are you looking for? ")
-        price_budget = float(input("What is your price budget? "))
+        price_budget = float(input("What is your price budget? $"))
         difficulty = input("What is your desired difficulty? (Very Easy, Easy, Average, Challenging) ")
 
         query_document = LegoSet("query", raw_query.split(), processors=processors)
@@ -118,7 +118,7 @@ def display_query_result(query: str, filtered_results: list[tuple[str, float]], 
         if set_instance:
             total_price += set_instance.price
             count += 1
-            print(f"Result {i + 1:02d} : [{score:0.6f}] {title} (Price: ${set_instance.price}, Difficulty: {set_instance.difficulty})")
+            print(f"Result {i + 1:02d} : [{score:0.6f}] {title} (Price: ${round(set_instance.price, 2)}, Build Difficulty: {set_instance.difficulty})")
     # Calculate average Lego set price for the sets returned by the query
     print(f"\nAverage Set Price: ${round((total_price / count if count != 0 else 0), 2)}")
     print()
